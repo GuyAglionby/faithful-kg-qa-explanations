@@ -1,0 +1,19 @@
+python -u grn.py -k 3 \
+      --fix_trans \
+      --unfreeze_epoch 99 \
+      --encoder roberta-large \
+      -elr 1e-5 \
+      -dlr 1e-3 \
+      --optim radam \
+      -ds obqa \
+      --mini_batch_size 32 \
+      --save_model \
+      --max_seq_len 128 \
+      --batch_size 32 \
+      --max_epochs_before_stop 10 \
+      --n_epochs 100 \
+      --seed 42 \
+      --eval_interval 50 \
+      --weight_decay 0.01 \
+      --ablation detach_s_all no_s_in_final_mlp \
+      --save_dir ./saved_models/mhgrn-obqa-no_embed-freeze_te-s42

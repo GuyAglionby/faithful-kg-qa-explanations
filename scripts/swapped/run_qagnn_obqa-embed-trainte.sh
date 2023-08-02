@@ -1,0 +1,22 @@
+python -u qagnn.py -k 5 \
+      --unfreeze_epoch 4 \
+      --encoder roberta-large \
+      -elr 1e-5 \
+      -dlr 1e-3 \
+      --optim radam \
+      -ds obqa \
+      --mini_batch_size 8 \
+      --save_model \
+      --max_seq_len 128 \
+      --batch_size 64 \
+      --gnn_dim 200 \
+      --max_epochs_before_stop 10 \
+      --n_epochs 100 \
+      --seed 42 \
+      --eval_interval 50 \
+      --weight_decay 0.01 \
+      --train_adj ./data/obqa-cpnet/graph/train.swapped.graph.adj.pk \
+      --dev_adj ./data/obqa-cpnet/graph/dev.swapped.graph.adj.pk \
+      --test_adj ./data/obqa-cpnet/graph/test.swapped.graph.adj.pk \
+      --ablation no_s_in_final_mlp_direct no_s_in_final_mlp_from_graph detach_s_all \
+      --save_dir ./saved_models_swapped/qagnn-obqa-no_embed-freeze_te-s42
